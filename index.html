@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <title>An even better quiz</title>
+</head>
+
+<body>
+
+
+  <div v-for="(question, index) in questions" :key="index" id="currentQuestion">
+    <h2>{{ question.text }}</h2>
+    <input type="radio" name="radio" id="a1" value="a1" v-model="checkedAnswer">
+    <label for="a1">{{ question.answers[0] }}</label>
+    <input type="radio" name="radio" id="a2" value="a2" v-model="checkedAnswer">
+    <label for="a2">{{ question.answers[1] }}</label>
+    <input type="radio" name="radio" id="a3" value="a3" v-model="checkedAnswer">
+    <label for="a3">{{ question.answers[2] }}</label>
+    <input type="radio" name="radio" id="a4" value="a4" v-model="checkedAnswer">
+    <label for="a3">{{ question.answers[3] }}</label>
+    <!-- <span>Checked answer: {{ checkedAnswer }}</span> -->
+    <br>
+  </div>
+
+
+  <script>
+    // let checkedAnswer = []
+    const currentQuestion = new Vue({
+
+      el: "#currentQuestion",
+      data: {
+        questions: [{
+            text: "How long was the Second World War?",
+
+            answers: ["3 Years", "4 Years", "5 Years", "6 Years"],
+
+          },
+
+
+          // {
+          //   text: "What year during the Nazi-Regime did Germany host the Olympics?",
+          //   answers: ["1933", "1936", "1929", "1950"]
+          // }
+        ],
+        checkedAnswer: []
+      }
+    })
+    // console.log(checkedAnswer);
+
+
+    // Vue.component('radio_buttons', {
+    //   data: function () {
+    //     return {
+    //       count: 0
+    //     }
+    //   },
+    //   template: '<input type="radio" name="radio" id="a1" value="a1">'
+
+    // const quiz = new Vue({
+
+    //     el:"#app",
+    //     data: {
+    //       questions:{ "How long was the Second World War?", a1:"3 Years", a2:"4 Years", a3:"5 Years", a5:"6 Years",
+    // q:"What year during the Nazi-Regime did Germany host the Olympics?", a1:"1933", a2:"1936", a3:"1929", a4:"1950"}, 
+
+
+    //     },
+
+    // }
+
+    // )
+  </script>
+
+
+</body>
+
+</html>
