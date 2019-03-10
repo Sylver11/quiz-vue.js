@@ -13,28 +13,36 @@
 
   <div id="currentQuestion">
 
-    <div v-for="(question, index) in questions" v-bind:key="">
+    <div v-for="(question, index) in questions" :key="question">
       <h2>{{ question.text }}</h2>
-      <input type="radio" name="radio" :id="'question_' + question.id" :value="index" v-model="item.checkedAnswer">
+      <input type="radio" name="radio" :id="'question_' + question.id" value="0" v-model="item.checkedAnswer[index]">
       <label for="a1">{{ question.answers[0] }}</label>
-      <input type="radio" name="radio" :id="'question_' + question.id" :value="index " v-model="item.checkedAnswer">
+
+
+      <input type="radio" name="radio" :id="'question_' + question.id" value="1" track-by='$index' v-model="item.checkedAnswer[index]">
       <label for="a2">{{ question.answers[1] }}</label>
-      <input type="radio" name="radio" :id="'question_' + question.id" :value="index" v-model="item.checkedAnswer">
+
+
+      <input type="radio" name="radio" :id="'question_' + question.id" @input="handleChange" value="2" v-model="item.checkedAnswer[index]">
       <label for="a3">{{ question.answers[2] }}</label>
-      <input type="radio" name="radio" :id="'question_' + question.id" :value="index" v-model="item.checkedAnswer">
+
+
+      <input type="radio" name="radio" :id="'question_' + question.id" value="3" v-model="item.checkedAnswer[index]">
       <label for="a4">{{ question.answers[3] }}</label>
-      <span>Checked answer: {{ item.checkedAnswer }}</span>
+
+      <span> Checked answer: {{ item.checkedAnswer }}</span>
       <br>
 
     </div>
-    <!-- <div v-if="checkedAnswer === 'question.solution'">  -->
-    A
-  </div>
-  </div>
+    <div>
 
+
+
+    </div>
+  </div>
+  <button @click="submitAnswer">Check Answers</button>
 
   <script>
-    // let checkedAnswer = []
     const currentQuestion = new Vue({
 
       el: "#currentQuestion",
@@ -43,47 +51,56 @@
 
             "text": "How long was the Second World War?",
             "answers": ["3 Years", "4 Years", "5 Years", "6 Years"],
-            "solution": "6 Years",
+            "solution": 3
 
           },
           {
             "text": "whatever",
             "answers": ["asdfasdf", "asdfa", "asdfasdf", "dsfsd"],
-            "solution": "asdfa"
+            "solution": 1
           }
         ],
 
 
-
-
-
-        // mounted() {
-        //   this.id = this._uid
-        // }
-        // id: {
-        //   _uid
-        // }
-
-        //v-bind:id="`${question.index}`" v-bind:value="{ text: `${question.answer[0]` }"
-
-        // {
-        //   text: "What year during the Nazi-Regime did Germany host the Olympics?",
-        //   answers: ["1933", "1936", "1929", "1950"]
-        // }
-
-
-        // mounted() {
-        //   this.id = this._uid
-        // },
         item: {
           checkedAnswer: [],
+        },
 
+        handleChange: () => {
+          item.checkedAnswer = item.map((item) => {
+            return questions[item];
+          })
         }
-
       }
-
     })
 
+    // submitAnswer(e) {
+    //   this.checkedAnswer = e.answer;
+
+    // }
+
+
+    //v-if="item.checkedAnswer === question.solution(index) "> Well done!
+    //
+
+    // mounted() {
+    // this.id = this._uid
+    // }
+    // id: {
+    // _uid
+    // }
+
+    //v-bind:id="`${question.index}`" v-bind:value="{ text: `${question.answer[0]` }"
+
+    // {
+    // text: "What year during the Nazi-Regime did Germany host the Olympics?",
+    // answers: ["1933", "1936", "1929", "1950"]
+    // }
+
+
+    // mounted() {
+    // this.id = this._uid
+    // },
     // console.log(checkedAnswer);
 
 
