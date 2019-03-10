@@ -71,7 +71,7 @@
 
       computed: {
         handleChange: () => {
-          item.checkedAnswer = item.map((item) => {
+          this.item.checkedAnswer = this.checkedAnswer.map((item) => {
             return questions[item];
             const userAnswer = checkedAnswer.elements[item].value;
             if (userAnswer == solutions[index]) {
