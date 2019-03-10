@@ -11,19 +11,25 @@
 
 <body>
 
+  <div id="currentQuestion">
 
-  <div v-for="(question, index) in questions" :key="index" id="currentQuestion">
-    <h2>{{ question.text }}</h2>
-    <input type="radio" name="radio" id="a1" value="a1" v-model="checkedAnswer">
-    <label for="a1">{{ question.answers[0] }}</label>
-    <input type="radio" name="radio" id="a2" value="a2" v-model="checkedAnswer">
-    <label for="a2">{{ question.answers[1] }}</label>
-    <input type="radio" name="radio" id="a3" value="a3" v-model="checkedAnswer">
-    <label for="a3">{{ question.answers[2] }}</label>
-    <input type="radio" name="radio" id="a4" value="a4" v-model="checkedAnswer">
-    <label for="a3">{{ question.answers[3] }}</label>
-    <!-- <span>Checked answer: {{ checkedAnswer }}</span> -->
-    <br>
+    <div v-for="(question, index) in questions" v-bind:key="">
+      <h2>{{ question.text }}</h2>
+      <input type="radio" name="radio" :id="'question_' + question.id" :value="index" v-model="item.checkedAnswer">
+      <label for="a1">{{ question.answers[0] }}</label>
+      <input type="radio" name="radio" :id="'question_' + question.id" :value="index " v-model="item.checkedAnswer">
+      <label for="a2">{{ question.answers[1] }}</label>
+      <input type="radio" name="radio" :id="'question_' + question.id" :value="index" v-model="item.checkedAnswer">
+      <label for="a3">{{ question.answers[2] }}</label>
+      <input type="radio" name="radio" :id="'question_' + question.id" :value="index" v-model="item.checkedAnswer">
+      <label for="a4">{{ question.answers[3] }}</label>
+      <span>Checked answer: {{ item.checkedAnswer }}</span>
+      <br>
+
+    </div>
+    <!-- <div v-if="checkedAnswer === 'question.solution'">  -->
+    A
+  </div>
   </div>
 
 
@@ -34,24 +40,50 @@
       el: "#currentQuestion",
       data: {
         questions: [{
-            text: "How long was the Second World War?",
-            answers: ["3 Years", "4 Years", "5 Years", "6 Years"]
+
+            "text": "How long was the Second World War?",
+            "answers": ["3 Years", "4 Years", "5 Years", "6 Years"],
+            "solution": "6 Years",
 
           },
-          text: "whatever",
-          answer: ["asdfasdf", "asdfa", "asdfasdf"]
-
-
-
-
-          // {
-          //   text: "What year during the Nazi-Regime did Germany host the Olympics?",
-          //   answers: ["1933", "1936", "1929", "1950"]
-          // }
+          {
+            "text": "whatever",
+            "answers": ["asdfasdf", "asdfa", "asdfasdf", "dsfsd"],
+            "solution": "asdfa"
+          }
         ],
-        checkedAnswer: []
+
+
+
+
+
+        // mounted() {
+        //   this.id = this._uid
+        // }
+        // id: {
+        //   _uid
+        // }
+
+        //v-bind:id="`${question.index}`" v-bind:value="{ text: `${question.answer[0]` }"
+
+        // {
+        //   text: "What year during the Nazi-Regime did Germany host the Olympics?",
+        //   answers: ["1933", "1936", "1929", "1950"]
+        // }
+
+
+        // mounted() {
+        //   this.id = this._uid
+        // },
+        item: {
+          checkedAnswer: [],
+
+        }
+
       }
+
     })
+
     // console.log(checkedAnswer);
 
 
