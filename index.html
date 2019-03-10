@@ -15,19 +15,19 @@
 
     <div v-for="(question, index) in questions" :key="question">
       <h2>{{ question.text }}</h2>
-      <input type="radio" name="radio" :id="'question_' + question.id" value="0" v-model="item.checkedAnswer[index]">
+      <input type="radio" name="radio" :id="'question_' + question.id" @input="handleChange" value="0" v-model="item.checkedAnswer">
       <label for="a1">{{ question.answers[0] }}</label>
 
 
-      <input type="radio" name="radio" :id="'question_' + question.id" value="1" track-by='$index' v-model="item.checkedAnswer[index]">
+      <input type="radio" name="radio" :id="'question_' + question.id" @input="handleChange" value="1" v-model="item.checkedAnswer">
       <label for="a2">{{ question.answers[1] }}</label>
 
 
-      <input type="radio" name="radio" :id="'question_' + question.id" @input="handleChange" value="2" v-model="item.checkedAnswer[index]">
+      <input type="radio" name="radio" :id="'question_' + question.id" @input="handleChange" value="2" v-model="item.checkedAnswer">
       <label for="a3">{{ question.answers[2] }}</label>
 
 
-      <input type="radio" name="radio" :id="'question_' + question.id" value="3" v-model="item.checkedAnswer[index]">
+      <input type="radio" name="radio" :id="'question_' + question.id" @input="handleChange" value="3" v-model="item.checkedAnswer">
       <label for="a4">{{ question.answers[3] }}</label>
 
       <span> Checked answer: {{ item.checkedAnswer }}</span>
@@ -51,26 +51,37 @@
 
             "text": "How long was the Second World War?",
             "answers": ["3 Years", "4 Years", "5 Years", "6 Years"],
-            "solution": 3
+
 
           },
           {
             "text": "whatever",
             "answers": ["asdfasdf", "asdfa", "asdfasdf", "dsfsd"],
-            "solution": 1
+
           }
         ],
-
+        solutions: [3, 1],
 
         item: {
           checkedAnswer: [],
         },
 
+
+      },
+
+      computed: {
         handleChange: () => {
           item.checkedAnswer = item.map((item) => {
             return questions[item];
+            const userAnswer = checkedAnswer.elements[item].value;
+            if (userAnswer == solutions[index]) {
+              numCorrect++;
+            }
+
+            console.log(numCorrect)
           })
         }
+
       }
     })
 
