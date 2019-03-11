@@ -39,7 +39,7 @@
     <span v-show="low"> You got {{ numCorrect }} out of {{ questions.length }} right. Try harder!</span>
     <span v-show="medium"> You got {{ numCorrect }} out of {{ questions.length }} right. Not too bad but try
       again!</span>
-    <!-- <span v-if="submitAnswer.high"> You got {{ numCorrect }} out of {{ questions.length }} right. Very good!</span> -->
+    <span v-if="high"> You got {{ numCorrect }} out of {{ questions.length }} right. Very good!</span>
 
 
 
@@ -74,10 +74,91 @@
             id: 4,
             text: "What year during the Nazi-Regime did Germany host the Olympics?",
             answers: ["1933", "1936", "1929", "1950"],
+          },
+          {
+            id: 5,
+            text: "Approximately, how many Jews lost their lives in concentration camps during the Nazi-regime",
+            answers: ["50000", "800000", "1000000", "6000000"]
+          }, {
+            id: 6,
+            text: "Who of the following persons was the chief of propanda and the right hand of Adolf Hitler?",
+            answers: ["Joseph Goebbels", "Hermann Goering", "Friedrich Himmler", "Erwin Rommel"]
+          }, {
+            id: 7,
+            text: "Of all countries particpating in the WW2 which of the following countries experienced the heighest amount of causulties in absolute numbers?",
+            answers: ["Germany", "Italy", "Russia", "United States"]
+          }, {
+            id: 8,
+            text: "After the siege of Germany Berlin was divided into sectors each assigned to one ally. How many sectors were there?",
+            answers: ["2", "3", "4", "6"]
+          },
+          {
+            id: 9,
+            text: "Which country was first attacked by German forces in the beginning of WW2?",
+            answers: ["Netherlands", "France", "England", "Poland"]
+          },
+          {
+            id: 10,
+            text: "Who was the leader of Japan during WW2?",
+            answers: ["Mao Zedong", "Emperor Meiji", "Emperor Hirohito", "Shinzo Abe"]
+          },
+          {
+            id: 11,
+            text: "How did Adolf Hitler die?",
+            answers: ["Commit sucide", "Killed in combat", "Heart attack", "Natural death"]
+          },
+          {
+            id: 12,
+            text: "What day was D-day?",
+            answers: ["8 August 1944", "6 June 1944", "6 August 1944", "8 Mai 1943"]
+          },
+          {
+            id: 13,
+            text: "Which area in France was first sieged by the United States forces?",
+            answers: ["La Cote D'Azur", "Normandy", "Languedoc", "Riviera"]
+          },
+          {
+            id: 14,
+            text: "Which country helped Germany invade Poland?",
+            answers: ["Romania", "Soviet Union", "Ukraine", "Netherlands"]
+          },
+          {
+            id: 15,
+            text: "Who was the president at the start of WWII?",
+            answers: ["Harry Truman", "Dwight Eisenhower", "Barack Obama", "Franklin Roosevelt"]
+          },
+          {
+            id: 16,
+            text: "Which event led the U.S. to enter WWII?",
+            answers: ["Sinking of the Lusitania", "Attack on Pearl Habour", "Bombing of London",
+              "German concentration camps"
+            ]
+          },
+          {
+            id: 17,
+            text: "Who was the leader of the Soviet Union during WW2?",
+            answers: ["Joseph Stalin", "Karl Marx", "Vladimir Lenin", "Vladimir Putin"]
+          },
+          {
+            id: 18,
+            text: "Which of the following countries remained neutral during the war?",
+            answers: ["Netherlands", "Spain", "France", "Italy"]
+          },
+          {
+            id: 19,
+            text: "What did the United States do to some Japanese-American citizens during the war?",
+            answers: ["Exil them to Hawaii", "Sent them to internment camps",
+              "Forced them to register as terrists", "Killed them"
+            ]
+          },
+          {
+            id: 20,
+            text: "What were Japanese suicide bombers called?",
+            answers: ["Kaiten", "Bushido", "Kamikaze", "Nain"]
+          },
 
-          }
         ],
-        solutions: [3, 2, 2, 1],
+        solutions: [3, 2, 2, 1, 3, 0, 2, 2, 3, 2, 0, 1, 1, 1, 1, 1, 0, 1, 0, 2],
 
         item: {
           checkedAnswer: [],
@@ -112,20 +193,17 @@
 
 
           if (this.numCorrect <= 10) {
-            // this.low = true
-            // this.medium = false
-            // this.high = false
+            this.low = "true"
+
           }
-          if (this.numCorrect = 11 && this.numCorrect <= 15) {
-            // this.low = false
-            // this.medium = true
-            // this.high = false
+          if (this.numCorrect >= 11 && this.numCorrect <= 15) {
+            this.medium = "true"
+
           }
-          // if (this.numCorrect = 15 && this.numCorrect <= 20) {
-          //   low: false;
-          //   medium: false;
-          //   high: true;
-          // }
+          if (this.numCorrect >= 15 && this.numCorrect <= 20) {
+
+            this.high = "true"
+          }
           console.log(this.numCorrect);
 
 
